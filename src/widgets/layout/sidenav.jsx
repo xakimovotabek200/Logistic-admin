@@ -1,7 +1,7 @@
 import { setOpenSidenav, useMaterialTailwindController } from "@/context";
 import { Avatar, Button, Typography } from "@material-tailwind/react";
 import { Link, NavLink } from "react-router-dom";
-import Logo from "../../assets/Logo.png";
+import Logo from "../../assets/logo.png";
 
 export function Sidenav({ routes }) {
   const [controller, dispatch] = useMaterialTailwindController();
