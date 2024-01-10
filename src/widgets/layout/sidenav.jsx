@@ -1,7 +1,7 @@
 import { setOpenSidenav, useMaterialTailwindController } from "@/context";
 import { Avatar, Button, Typography } from "@material-tailwind/react";
 import { Link, NavLink } from "react-router-dom";
-import brandImg from "../../assets/Logo.png";
+import Logo from "../../assets/Logo.png";
 
 export function Sidenav({ routes }) {
   const [controller, dispatch] = useMaterialTailwindController();
@@ -30,7 +30,7 @@ export function Sidenav({ routes }) {
           >
             <Avatar
               className="md:mt:3 mx-auto w-full object-cover"
-              src={brandImg}
+              src={Logo}
             />
           </Link>
         </div>
