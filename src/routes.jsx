@@ -1,12 +1,13 @@
 import {
   Bars3Icon,
   BookmarkIcon,
+  PhoneIcon,
   HomeIcon,
   UserGroupIcon,
-  UsersIcon,
+  BriefcaseIcon,
+  NewspaperIcon,
 } from "@heroicons/react/24/solid";
 import GetGroups from "./pages/About/About";
-import GetUser from "./pages/Blog/Blog";
 import NewsForm from "./pages/News/News";
 import GetKategoriya from "./pages/Vacansy/GetKategoriya";
 import Contact from "./pages/contact/Contact";
@@ -34,26 +35,19 @@ export const routes = [
         element: <GetGroups />,
       },
       {
-        icon: <BookmarkIcon {...icon} />,
+        icon: <PhoneIcon {...icon} />,
         name: "contact",
         path: "/contact",
         element: <Contact />,
       },
       {
-        icon: <UsersIcon {...icon} />,
-        name: "Blog us",
-        path: "/blog",
-        element: <GetUser />,
-      },
-
-      {
-        icon: <Bars3Icon {...icon} />,
-        name: "vacansy",
+        icon: <BriefcaseIcon {...icon} />,
+        name: "vacancy",
         path: "/vacansy",
         element: <GetKategoriya />,
       },
       {
-        icon: <Bars3Icon {...icon} />,
+        icon: <NewspaperIcon {...icon} />,
         name: "News",
         path: "/news",
         element: <NewsForm />,

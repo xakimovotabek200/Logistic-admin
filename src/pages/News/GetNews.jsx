@@ -1,11 +1,30 @@
-import React from "react";
+import axios from "axios";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
 const GetNews = () => {
+  const [data, setData] = useState(null);
+  const [error, setError] = useState(null);
+
+  async function getData() {
+    await axios
+      .get("/news")
+      .then((response) => {
+        setData(response.data);
+      })
+      .catch((error) => {
+        setError(error.message);
+      });
+  }
+  useEffect(() => {
+    getData();
+  }, []);
+  console.log(data, "data");
+
   return (
     <div>
       <section className="font-poppins flex items-center">
-        <div className="mx-auto max-w-6xl justify-center px-4 py-4 lg:py-0">
+        <div className="mx-auto max-w-6xl justify-center  py-4 lg:py-0">
           <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
             <div className="rounded-lg bg-white shadow-md ">
               <Link to={"/"} className="">

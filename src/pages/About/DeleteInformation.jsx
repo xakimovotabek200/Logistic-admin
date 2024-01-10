@@ -17,7 +17,6 @@ const DeleteInformation = ({ id, getData }) => {
 
   const confirm = () => {
     handleDelete();
-    toast.success("data deleted");
   };
 
   const cancel = (e) => {

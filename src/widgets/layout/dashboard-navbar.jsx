@@ -1,20 +1,16 @@
-import { useLocation, Link, useNavigate } from "react-router-dom";
-import {
-  Navbar,
-  Typography,
-  Button,
-  IconButton,
-  Breadcrumbs,
-} from "@material-tailwind/react";
+import { setOpenSidenav, useMaterialTailwindController } from "@/context";
 import {
   ArrowRightOnRectangleIcon,
   Bars3Icon,
 } from "@heroicons/react/24/solid";
 import {
-  useMaterialTailwindController,
-  setOpenConfigurator,
-  setOpenSidenav,
-} from "@/context";
+  Breadcrumbs,
+  IconButton,
+  Navbar,
+  Typography,
+} from "@material-tailwind/react";
+import { Link, useLocation, useNavigate } from "react-router-dom";
+import { Button } from "antd";
 
 export function DashboardNavbar() {
   const [controller, dispatch] = useMaterialTailwindController();
@@ -24,28 +20,29 @@ export function DashboardNavbar() {
   const navigate = useNavigate();
 
   const LogoutComponent = () => {
-
-    const token = sessionStorage.removeItem('token');
+    const token = sessionStorage.removeItem("token");
     if (!token) {
-      navigate('/auth/sign-in');
+      navigate("/auth/sign-in");
     }
     return null;
   };
   return (
     <Navbar
       color={fixedNavbar ? "white" : "transparent"}
-      className={`rounded-xl transition-all ${fixedNavbar
+      className={`rounded-xl transition-all ${
+        fixedNavbar
           ? "sticky top-4 z-40 py-3 shadow-md shadow-blue-gray-500/5"
           : "px-0 py-1"
-        }`}
+      }`}
       fullWidth
       blurred={fixedNavbar}
     >
       <div className="flex flex-col-reverse justify-between gap-6 md:flex-row md:items-center">
         <div className="capitalize">
           <Breadcrumbs
-            className={`bg-transparent p-0 transition-all ${fixedNavbar ? "mt-1" : ""
-              }`}
+            className={`bg-transparent p-0 transition-all ${
+              fixedNavbar ? "mt-1" : ""
+            }`}
           >
             <Link to={`/${layout}`}>
               <Typography
@@ -69,7 +66,6 @@ export function DashboardNavbar() {
           </Typography>
         </div>
         <div className="flex items-center">
-
           <IconButton
             variant="text"
             color="blue-gray"
@@ -79,12 +75,10 @@ export function DashboardNavbar() {
             <Bars3Icon strokeWidth={3} className="h-6 w-6 text-blue-gray-500" />
           </IconButton>
           <Button
-            variant="text"
-            color="blue-gray"
-            className="hidden items-center gap-1 px-4 xl:flex"
+            className="hidden items-center gap-1 bg-red-500 px-4 text-white xl:flex"
             onClick={LogoutComponent}
           >
-            <ArrowRightOnRectangleIcon className="h-5 w-5 text-blue-gray-500" />
+            <ArrowRightOnRectangleIcon className="h-5 w-5 text-white" />
             Log out
           </Button>
           <IconButton

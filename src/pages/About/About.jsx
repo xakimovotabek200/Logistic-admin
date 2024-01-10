@@ -2,6 +2,7 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import DeleteInformation from "./DeleteInformation";
 import EditInformation from "./EditInformation";
+import PostAbout from "./PostAbout";
 
 function About() {
   const [data, setData] = useState(null);
@@ -53,7 +54,7 @@ function About() {
                     <td className="border p-3">{item?.number}</td>
                     <td className="border p-3">{item?.email}</td>
                     <td className="border p-3">
-                      <div className="flex justify-center items-center gap-2">
+                      <div className="flex items-center justify-center gap-2">
                         <DeleteInformation id={item.id} getData={getData} />
                         <EditInformation
                           id={item.id}
@@ -77,6 +78,7 @@ function About() {
             )}
           </tbody>
         </table>
+        <PostAbout />
       </div>
     </>
   );
