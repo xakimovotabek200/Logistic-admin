@@ -12,6 +12,7 @@ import NewsForm from "./pages/News/News";
 import GetKategoriya from "./pages/Vacansy/GetKategoriya";
 import Contact from "./pages/contact/Contact";
 import GetOrder from "./pages/home/GetOrder";
+import Hiring from "./pages/Hiring/Hiring";
 
 const icon = {
   className: "w-5 h-5 text-inherit",
@@ -51,6 +52,12 @@ export const routes = [
         name: "News",
         path: "/news",
         element: <NewsForm />,
+      },
+      {
+        icon: <NewspaperIcon {...icon} />,
+        name: "Hiring",
+        path: "/hiring",
+        element: <Hiring />,
       },
     ],
   },

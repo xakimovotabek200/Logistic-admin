@@ -1,6 +1,6 @@
 import { Button, Input, Modal } from "antd";
 import axios from "axios";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import GetNews from "./GetNews";
 const { TextArea } = Input;
 
@@ -60,15 +60,16 @@ const NewsForm = () => {
     try {
       const response = await axios.post("news", formdataForSubmit);
       console.log(response.data);
+      handleCancel(response);
     } catch (error) {
       console.error("Error submitting news post:", error);
     }
   };
   return (
-    <div className="mx-auto mt-[8px] flex min-h-[840px] min-w-full max-w-screen-lg flex-col gap-8 rounded-lg bg-white shadow-2xl md:container md:mt-10">
+    <div className="shadow-md:container  mt-[8px] flex min-h-[840px] min-w-full max-w-screen-lg flex-col gap-8 rounded-lg bg-white md:mt-10">
       <Button
         type="primary"
-        className="fixed bottom-5 right-5 w-fit bg-blue-500"
+        className="fixed bottom-5 right-5 z-30 w-fit bg-blue-500"
         onClick={showModal}
       >
         + Add News

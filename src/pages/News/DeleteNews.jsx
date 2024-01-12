@@ -19,20 +19,15 @@ const DeleteNews = ({ id, getData }) => {
     handleDelete();
   };
 
-  const cancel = (e) => {
-    toast.error("Deletion canceled");
-  };
-
   return (
     <div>
       <Popconfirm
         title="Are you sure to delete this data?"
         onConfirm={confirm}
-        onCancel={cancel}
         okText="Yes"
         cancelText="No"
       >
-        <span className="fa-solid fa-trash cursor-pointer text-center text-xl text-red-500" />
+        <p>O'chirish</p>
       </Popconfirm>
     </div>
   );
