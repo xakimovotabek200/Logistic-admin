@@ -14,6 +14,7 @@ const SeeAll = ({ data }) => {
   const handleCancel = () => {
     setIsModalOpen(false);
   };
+
   return (
     <div>
       <p onClick={showModal}>Toliq Korish</p>
@@ -25,10 +26,7 @@ const SeeAll = ({ data }) => {
         onCancel={handleCancel}
       >
         <div className="grid grid-cols-2 items-start">
-          <img
-            src={`http://192.168.1.182:8081/api/image/` + data?.jpgId}
-            alt=""
-          />
+          <img src={`http://192.168.137.62:8081/api/` + data?.jpgId} alt="" />
           <table>
             <tbody>
               <tr>
@@ -51,11 +49,15 @@ const SeeAll = ({ data }) => {
               </tr>
               <tr>
                 <th>description_ru</th>
-                <td>{data?.description_ru}</td>
+                <td className="line-clamp-3 whitespace-pre-wrap break-words">
+                  {data?.description_ru}
+                </td>
               </tr>
               <tr>
                 <th>description_uz</th>
-                <td>{data?.description_uz}</td>
+                <td className="line-clamp-3 whitespace-pre-wrap break-words">
+                  {data?.description_uz}
+                </td>
               </tr>
             </tbody>
           </table>

@@ -5,7 +5,7 @@ import Logo from "../../assets/logo.png";
 
 export function Sidenav({ routes }) {
   const [controller, dispatch] = useMaterialTailwindController();
-  const { sidenavColor, sidenavType, openSidenav, fixedNavbar } = controller;
+  const { sidenavColor, sidenavType, openSidenav } = controller;
   const sidenavTypes = {
     dark: "bg-gradient-to-br from-blue-gray-800 to-blue-gray-900",
     white: "bg-white shadow-lg",
@@ -19,11 +19,11 @@ export function Sidenav({ routes }) {
       } fixed inset-0 z-50 my-4 ml-4 h-[calc(100vh-32px)] w-72 overflow-y-auto rounded-xl transition-transform duration-300 xl:translate-x-0`}
     >
       <div
-        className={`relative border-b ${
+        className={`relative border-b  ${
           sidenavType === "dark" ? "border-white/20" : "border-blue-gray-50"
         }`}
       >
-        <div className="flex items-center gap-4 py-4 px-8 ">
+        <div className="flex items-center gap-4 px-8 py-4 ">
           <Link
             to="/dashboard/home/"
             className=" items-center justify-center gap-4"
@@ -39,11 +39,11 @@ export function Sidenav({ routes }) {
         {routes.map(({ layout, title, pages }, key) => (
           <ul key={key} className="mb-4 flex flex-col gap-1">
             {title && (
-              <li className="mx-3.5 mt-4 mb-2">
+              <li className="mx-3.5 mb-2 mt-4">
                 <Typography
                   variant="small"
                   color={sidenavType === "dark" ? "white" : "blue-gray"}
-                  className="font-black uppercase opacity-75"
+                  className="font-black uppercase opacity-75 "
                 >
                   {title}
                 </Typography>

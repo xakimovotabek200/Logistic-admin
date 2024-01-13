@@ -1,4 +1,4 @@
-import { Button, Input, Modal } from "antd";
+import { Button, Checkbox, Input, Modal } from "antd";
 import axios from "axios";
 import React, { useState } from "react";
 import { toast } from "react-toastify";
@@ -15,6 +15,7 @@ const EditVacancy = ({ data, id, getData }) => {
     title_en: data?.title_en || "",
     title_ru: data?.title_ru || "",
     title_uz: data?.title_uz || "",
+    location: data?.location || "",
     workHours: data?.workHours || "",
     workdays: data?.workdays || "",
   });
@@ -152,6 +153,24 @@ const EditVacancy = ({ data, id, getData }) => {
             className="w-full rounded-md border border-blue-500 p-2 focus:outline-2 focus:outline-blue-700"
           />
         </div>
+        <div>
+          <label htmlFor="location">Location:</label>
+          <Input
+            defaultValue={data.location}
+            value={editedData.location}
+            onChange={(e) => handleChange("location", e.target.value)}
+            className="w-full rounded-md border border-blue-500 p-2 focus:outline-2 focus:outline-blue-700"
+          />
+        </div>
+        <label>
+          Remote:
+          <Checkbox
+            className="px-5 py-5"
+            onChange={(e) =>
+              setEditedData((old) => ({ ...old, remote: e.target.checked }))
+            }
+          />{" "}
+        </label>
         <Button
           className="my-6 w-full bg-blue-500"
           type="primary"

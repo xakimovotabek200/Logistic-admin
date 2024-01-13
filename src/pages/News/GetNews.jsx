@@ -86,7 +86,7 @@ const GetNews = () => {
                     </Dropdown>
                   </div>
                   <img
-                    src={`http://192.168.137.126:8081/api/image/` + item?.jpgId}
+                    src={`http://192.168.137.62:8081/api/image/` + item?.jpgId}
                     alt=""
                     className="h-72 w-full rounded-t-lg object-cover"
                   />

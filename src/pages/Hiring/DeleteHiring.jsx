@@ -1,15 +1,15 @@
 import { Popconfirm, message } from "antd";
 import axios from "axios";
-import React from "react";
+import React, { useEffect } from "react";
 import { toast } from "react-toastify";
 
 const DeleteHiring = ({ id, getData }) => {
   async function handleDelete() {
     try {
       const res = await axios.delete(`/hiring/${id}`);
-      if (res.status === 204) {
-        toast.info("O'chirildi!");
+      if (res.status === 200) {
         getData();
+        toast.info("O'chirildi!");
       }
     } catch (error) {
       toast.error("Nimadadir xatolik ketdi!");
@@ -18,7 +18,6 @@ const DeleteHiring = ({ id, getData }) => {
 
   const confirm = () => {
     handleDelete();
-    toast.success("Task deleted");
   };
 
   return (

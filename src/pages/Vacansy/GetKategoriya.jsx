@@ -1,4 +1,4 @@
-import { Button, Input, Modal } from "antd";
+import { Button, Checkbox, Input, Modal } from "antd";
 import axios from "axios";
 import { useState } from "react";
 import Table from "./Table";
@@ -16,9 +16,10 @@ const Vacansy = ({ getData }) => {
     title_uz: "",
     workHours: "",
     workdays: "",
+    remote: "",
+    location: "",
   });
 
-  const [error, setError] = useState(null);
   const [success, setSuccess] = useState(false);
 
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -39,25 +40,13 @@ const Vacansy = ({ getData }) => {
     setFormData({ ...formData, [name]: value });
   };
 
-  const validateForm = () => {
-    for (const key in formData) {
-      if (formData[key].trim() === "") {
-        setError(`${key} is required`);
-        return false;
-      }
-    }
-    setError(null);
-    return true;
-  };
-
-  const postData = async () => {
+  const postData = async (e) => {
+    e.preventDefault();
     try {
-      if (validateForm()) {
-        const response = await axios.post("/vacancy", formData);
-        setSuccess(true);
-        handleCancel();
-        getData();
-      }
+      const response = await axios.post("/vacancy", formData);
+      setSuccess(true);
+      handleCancel();
+      getData();
     } catch (error) {
       setSuccess(false);
     }
@@ -80,7 +69,7 @@ const Vacansy = ({ getData }) => {
         onOk={handleOk}
         onCancel={handleCancel}
       >
-        <form>
+        <form onSubmit={postData}>
           <label>
             Description (English):
             <TextArea
@@ -89,6 +78,7 @@ const Vacansy = ({ getData }) => {
                 height: 120,
                 resize: "none",
               }}
+              required
               placeholder="Description in English"
               type="text"
               name="description_en"
@@ -180,10 +170,29 @@ const Vacansy = ({ getData }) => {
               onChange={handleChange}
             />
           </label>
+          <label>
+            Location:
+            <Input
+              type="text"
+              name="location"
+              size="large"
+              value={formData.location}
+              onChange={handleChange}
+            />
+          </label>
+          <label>
+            Remote:
+            <Checkbox
+            className="py-5 px-10 "
+              onChange={(e) =>
+                setFormData((old) => ({ ...old, remote: e.target.checked }))
+              }
+            />{" "}
+          </label>
           <Button
             type="primary"
+            htmlType="submit"
             className="my-5 w-full bg-blue-500"
-            onClick={postData}
           >
             Submit
           </Button>

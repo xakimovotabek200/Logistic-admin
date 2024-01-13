@@ -2,6 +2,7 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import DeleteVacansy from "./DeleteVacansy";
 import EditVacansy from "./EditVacansy";
+import Vacansy from "./GetKategoriya";
 
 const Table = () => {
   const [data, setData] = useState(null);
@@ -32,6 +33,8 @@ const Table = () => {
             <th className="border p-3">description_en,uz,ru</th>
             <th className="border p-3">workHours</th>
             <th className="border p-3">workdays</th>
+            <th className="border p-3">Location</th>
+            <th className="border p-3">Remote</th>
             <th className="border p-3">Action </th>
           </tr>
         </thead>
@@ -58,6 +61,10 @@ const Table = () => {
                   </td>
                   <td className="border p-3">{item?.workHours}</td>
                   <td className="border p-3">{item?.workdays}</td>
+                  <td className="border p-3">{item?.location}</td>
+                  <td className="border p-3">
+                    {item?.remote ? "online" : "offline"}
+                  </td>
                   <td className="border p-3 ">
                     <div className="flex justify-center gap-2">
                       <DeleteVacansy id={item.id} getData={getData} />
