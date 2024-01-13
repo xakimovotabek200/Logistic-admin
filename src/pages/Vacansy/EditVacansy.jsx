@@ -3,6 +3,8 @@ import axios from "axios";
 import React, { useState } from "react";
 import { toast } from "react-toastify";
 
+const { TextArea } = Input;
+
 const EditVacancy = ({ data, id, getData }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [editedData, setEditedData] = useState({
@@ -56,13 +58,19 @@ const EditVacancy = ({ data, id, getData }) => {
       />
       <Modal
         title="Edit Vacancy"
-        visible={isModalOpen}
+        open={isModalOpen}
         onOk={handleSubmit}
         onCancel={handleCancel}
       >
         <div>
           <label htmlFor="description_en">Description_en:</label>
-          <Input
+          <TextArea
+            showCount
+            style={{
+              height: 120,
+              resize: "none",
+            }}
+            placeholder="Description in English"
             defaultValue={data.description_en}
             value={editedData.description_en}
             onChange={(e) => handleChange("description_en", e.target.value)}
@@ -71,7 +79,13 @@ const EditVacancy = ({ data, id, getData }) => {
         </div>
         <div>
           <label htmlFor="description_ru">description_ru:</label>
-          <Input
+          <TextArea
+            showCount
+            style={{
+              height: 120,
+              resize: "none",
+            }}
+            placeholder="Description in Russian"
             defaultValue={data.description_ru}
             value={editedData.description_ru}
             onChange={(e) => handleChange("description_ru", e.target.value)}
@@ -80,19 +94,16 @@ const EditVacancy = ({ data, id, getData }) => {
         </div>
         <div>
           <label htmlFor="description_en">Description_uz:</label>
-          <Input
+          <TextArea
+            showCount
+            style={{
+              height: 120,
+              resize: "none",
+            }}
+            placeholder="Description in uzbek"
             defaultValue={data.description_uz}
             value={editedData.description_uz}
             onChange={(e) => handleChange("description_uz", e.target.value)}
-            className="w-full rounded-md border border-blue-500 p-2 focus:outline-2 focus:outline-blue-700"
-          />
-        </div>
-        <div>
-          <label htmlFor="name">name:</label>
-          <Input
-            defaultValue={data.name}
-            value={editedData.name}
-            onChange={(e) => handleChange("name", e.target.value)}
             className="w-full rounded-md border border-blue-500 p-2 focus:outline-2 focus:outline-blue-700"
           />
         </div>
@@ -128,7 +139,7 @@ const EditVacancy = ({ data, id, getData }) => {
           <Input
             defaultValue={data.workHours}
             value={editedData.workHours}
-            onChange={(e) => handleChange("title_en", e.target.value)}
+            onChange={(e) => handleChange("workHours", e.target.value)}
             className="w-full rounded-md border border-blue-500 p-2 focus:outline-2 focus:outline-blue-700"
           />
         </div>

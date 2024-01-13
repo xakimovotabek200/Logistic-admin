@@ -1,7 +1,8 @@
 import { Button, Input, Modal } from "antd";
 import axios from "axios";
-import React, { useState } from "react";
+import { useState } from "react";
 import { toast } from "react-toastify";
+const { TextArea } = Input;
 
 const EditInformation = ({ data, id, getData }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -32,10 +33,10 @@ const EditInformation = ({ data, id, getData }) => {
       [field]: value,
     }));
   };
-  console.log(data, "data");
+
   const handleSubmit = async () => {
     try {
-      const res = await axios.patch(`/information/${data[0].id}`, editedData);
+      const res = await axios.patch(`/information/${data.id}`, editedData);
       if (res.status === 200) {
         toast.success("Profile edited successfully");
         handleCancel();
@@ -54,21 +55,34 @@ const EditInformation = ({ data, id, getData }) => {
       />
       <Modal
         title="Edit Vacancy"
-        visible={isModalOpen}
+        open={isModalOpen}
         onOk={handleSubmit}
         onCancel={handleCancel}
       >
         <div>
           <label htmlFor="about_en">about_en:</label>
-          <Input
+          <TextArea
+            showCount
+            style={{
+              height: 120,
+              resize: "none",
+            }}
+            placeholder="Description in English"
             value={editedData.about_en}
+            defaultValue={editedData.about_en}
             onChange={(e) => handleChange("about_en", e.target.value)}
             className="w-full rounded-md border border-blue-500 p-2 focus:outline-2 focus:outline-blue-700"
           />
         </div>
         <div>
           <label htmlFor="about_ru">about_ru:</label>
-          <Input
+          <TextArea
+            showCount
+            style={{
+              height: 120,
+              resize: "none",
+            }}
+            placeholder="Description in English"
             defaultValue={data.about_ru}
             value={editedData.about_ru}
             onChange={(e) => handleChange("about_ru", e.target.value)}
@@ -77,8 +91,15 @@ const EditInformation = ({ data, id, getData }) => {
         </div>
         <div>
           <label htmlFor="about_uz">about_uz:</label>
-          <Input
+          <TextArea
+            showCount
+            style={{
+              height: 120,
+              resize: "none",
+            }}
+            placeholder="Description in English"
             value={editedData.about_uz}
+            defaultValue={editedData.about_uz}
             onChange={(e) => handleChange("about_uz", e.target.value)}
             className="w-full rounded-md border border-blue-500 p-2 focus:outline-2 focus:outline-blue-700"
           />
@@ -87,15 +108,17 @@ const EditInformation = ({ data, id, getData }) => {
           <label htmlFor="location">location:</label>
           <Input
             value={editedData.location}
+            defaultValue={editedData.location}
             onChange={(e) => handleChange("location", e.target.value)}
             className="w-full rounded-md border border-blue-500 p-2 focus:outline-2 focus:outline-blue-700"
           />
         </div>
         <div>
-          <label htmlFor="phone">phone:</label>
+          <label htmlFor="number">phone:</label>
           <Input
-            type="number"
+            type="text"
             value={editedData.number}
+            defaultValue={editedData.number}
             onChange={(e) => handleChange("number", e.target.value)}
             className="w-full rounded-md border border-blue-500 p-2 focus:outline-2 focus:outline-blue-700"
           />
@@ -104,6 +127,7 @@ const EditInformation = ({ data, id, getData }) => {
           <label htmlFor="email">email:</label>
           <Input
             value={editedData.email}
+            defaultValue={editedData.email}
             onChange={(e) => handleChange("email", e.target.value)}
             className="w-full rounded-md border border-blue-500 p-2 focus:outline-2 focus:outline-blue-700"
           />

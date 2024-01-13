@@ -154,7 +154,7 @@ const NewsForm = () => {
             />
           </label>
           <label className="">
-            Choode Image file
+            Choose Image file
             <br />
             <input
               type="file"

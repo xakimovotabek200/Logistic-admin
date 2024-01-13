@@ -3,13 +3,13 @@ import axios from "axios";
 import React from "react";
 import { toast } from "react-toastify";
 
-const DeleteContact = ({ id, getData }) => {
+const DeleteHiring = ({ id, getData }) => {
   async function handleDelete() {
     try {
-      const res = await axios.delete(`/contact/${id}`);
+      const res = await axios.delete(`/hiring/${id}`);
       if (res.status === 204) {
-        getData();
         toast.info("O'chirildi!");
+        getData();
       }
     } catch (error) {
       toast.error("Nimadadir xatolik ketdi!");
@@ -18,6 +18,7 @@ const DeleteContact = ({ id, getData }) => {
 
   const confirm = () => {
     handleDelete();
+    toast.success("Task deleted");
   };
 
   return (
@@ -34,4 +35,4 @@ const DeleteContact = ({ id, getData }) => {
   );
 };
 
-export default DeleteContact;
+export default DeleteHiring;

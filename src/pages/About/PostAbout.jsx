@@ -1,6 +1,7 @@
 import { Button, Input, Modal } from "antd";
 import axios from "axios";
 import { useState } from "react";
+const { TextArea } = Input;
 
 const PostAbout = ({ getData }) => {
   const [formData, setFormData] = useState({
@@ -9,7 +10,7 @@ const PostAbout = ({ getData }) => {
     about_uz: "",
     location: "",
     number: "",
-    Email: "",
+    email: "",
   });
 
   const [error, setError] = useState(null);
@@ -77,7 +78,13 @@ const PostAbout = ({ getData }) => {
         <form>
           <label>
             about_en:
-            <Input
+            <TextArea
+              showCount
+              style={{
+                height: 120,
+                resize: "none",
+              }}
+              placeholder="Description in English"
               type="text"
               name="about_en"
               size="large"
@@ -87,7 +94,13 @@ const PostAbout = ({ getData }) => {
           </label>
           <label>
             about_ru (Russian):
-            <Input
+            <TextArea
+              showCount
+              style={{
+                height: 120,
+                resize: "none",
+              }}
+              placeholder="Description in Russian"
               type="text"
               name="about_ru"
               size="large"
@@ -97,7 +110,13 @@ const PostAbout = ({ getData }) => {
           </label>
           <label>
             about_uz (Uzbek):
-            <Input
+            <TextArea
+              showCount
+              style={{
+                height: 120,
+                resize: "none",
+              }}
+              placeholder="Description in Uzbek"
               type="text"
               name="about_uz"
               size="large"
@@ -113,6 +132,7 @@ const PostAbout = ({ getData }) => {
               size="large"
               value={formData.location}
               onChange={handleChange}
+              required
             />
           </label>
 
@@ -129,17 +149,16 @@ const PostAbout = ({ getData }) => {
           <label>
             Email:
             <Input
-              type="email"
+              type="text"
               size="large"
-              name="Email"
-              value={formData.Email}
+              name="email"
+              value={formData.email}
               onChange={handleChange}
             />
           </label>
-
           <Button
             type="primary"
-            className="my-5 bg-blue-500"
+            className="my-5 w-full bg-blue-500"
             onClick={postData}
           >
             Submit

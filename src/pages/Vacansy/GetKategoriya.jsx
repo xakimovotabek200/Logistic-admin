@@ -2,6 +2,8 @@ import { Button, Input, Modal } from "antd";
 import axios from "axios";
 import { useState } from "react";
 import Table from "./Table";
+import { toast } from "react-toastify";
+const { TextArea } = Input;
 
 const Vacansy = ({ getData }) => {
   const [formData, setFormData] = useState({
@@ -53,11 +55,10 @@ const Vacansy = ({ getData }) => {
       if (validateForm()) {
         const response = await axios.post("/vacancy", formData);
         setSuccess(true);
+        handleCancel();
         getData();
-        handleCancel(response);
       }
     } catch (error) {
-      setError(error.response?.data?.message || "An error occurred");
       setSuccess(false);
     }
   };
@@ -74,7 +75,7 @@ const Vacansy = ({ getData }) => {
       </Button>
       <Modal
         width={1000}
-        title="Create News"
+        title="Create Vacansy"
         open={isModalOpen}
         onOk={handleOk}
         onCancel={handleCancel}
@@ -82,7 +83,13 @@ const Vacansy = ({ getData }) => {
         <form>
           <label>
             Description (English):
-            <Input
+            <TextArea
+              showCount
+              style={{
+                height: 120,
+                resize: "none",
+              }}
+              placeholder="Description in English"
               type="text"
               name="description_en"
               size="large"
@@ -92,31 +99,32 @@ const Vacansy = ({ getData }) => {
           </label>
           <label>
             Description (Russian):
-            <Input
-              type="text"
-              name="description_ru"
+            <TextArea
+              showCount
+              style={{
+                height: 120,
+                resize: "none",
+              }}
+              placeholder="Description in Russian"
               size="large"
               value={formData.description_ru}
+              name="description_ru"
               onChange={handleChange}
             />
           </label>
           <label>
             Description (Uzbek):
-            <Input
+            <TextArea
+              showCount
+              style={{
+                height: 120,
+                resize: "none",
+              }}
+              placeholder="Description in Uzbek"
               type="text"
               name="description_uz"
               size="large"
               value={formData.description_uz}
-              onChange={handleChange}
-            />
-          </label>
-          <label>
-            Name
-            <Input
-              type="text"
-              name="name"
-              size="large"
-              value={formData.name}
               onChange={handleChange}
             />
           </label>
@@ -155,7 +163,7 @@ const Vacansy = ({ getData }) => {
           <label>
             Work Hours:
             <Input
-              type="date"
+              type="text"
               name="workHours"
               size="large"
               value={formData.workHours}
@@ -174,16 +182,13 @@ const Vacansy = ({ getData }) => {
           </label>
           <Button
             type="primary"
-            className="my-5 bg-blue-500"
+            className="my-5 w-full bg-blue-500"
             onClick={postData}
           >
             Submit
           </Button>
         </form>
       </Modal>
-
-      {error && <p>Error: {error}</p>}
-      {success && <p>Post successful!</p>}
     </div>
   );
 };

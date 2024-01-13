@@ -45,7 +45,7 @@ const SeeAll = ({ data }) => {
               </tr>
               <tr>
                 <th>description_en</th>
-                <td className="max-w-full whitespace-pre-wrap ">
+                <td className="line-clamp-3 whitespace-pre-wrap break-words">
                   {data?.description_en}
                 </td>
               </tr>

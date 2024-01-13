@@ -30,7 +30,6 @@ const Table = () => {
             <th className="border p-3">#</th>
             <th className="border p-3">title_en,uz,ru</th>
             <th className="border p-3">description_en,uz,ru</th>
-            <th className="border p-3">Name</th>
             <th className="border p-3">workHours</th>
             <th className="border p-3">workdays</th>
             <th className="border p-3">Action </th>
@@ -57,7 +56,6 @@ const Table = () => {
                     <hr className="my-2" />
                     {item?.description_uz}
                   </td>
-                  <td className="border p-3">{item?.name}</td>
                   <td className="border p-3">{item?.workHours}</td>
                   <td className="border p-3">{item?.workdays}</td>
                   <td className="border p-3 ">

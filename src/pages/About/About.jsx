@@ -20,7 +20,7 @@ function About() {
   useEffect(() => {
     getData();
   }, []);
-  console.log(data, "about");
+
   return (
     <>
       <div className="mx-auto mt-[8px] flex min-h-[840px] min-w-full max-w-screen-lg flex-col gap-8 rounded-lg bg-white shadow-2xl md:container md:mt-10">
@@ -59,7 +59,7 @@ function About() {
                         <EditInformation
                           id={item.id}
                           getData={getData}
-                          data={data}
+                          data={item}
                         />
                       </div>
                     </td>

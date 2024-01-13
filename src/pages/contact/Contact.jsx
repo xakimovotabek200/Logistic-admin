@@ -21,8 +21,6 @@ const Contact = () => {
     getData();
   }, []);
 
-  console.log(contactData, "contactdata");
-
   return (
     <div className="mx-auto mt-[8px] flex min-h-[840px] min-w-full max-w-screen-lg flex-col gap-8 rounded-lg bg-white shadow-2xl md:container md:mt-10">
       <table className="bg-[#333366] text-white">
