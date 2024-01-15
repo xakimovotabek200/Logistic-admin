@@ -1,6 +1,6 @@
 import { Button, Checkbox, Input, Modal } from "antd";
 import axios from "axios";
-import React, { useState } from "react";
+import { useState } from "react";
 import { toast } from "react-toastify";
 
 const { TextArea } = Input;
@@ -11,7 +11,6 @@ const EditVacancy = ({ data, id, getData }) => {
     description_en: data?.description_en || "",
     description_ru: data?.description_ru || "",
     description_uz: data?.description_uz || "",
-    name: data?.name || "",
     title_en: data?.title_en || "",
     title_ru: data?.title_ru || "",
     title_uz: data?.title_uz || "",
@@ -50,7 +49,7 @@ const EditVacancy = ({ data, id, getData }) => {
       toast.error("An error occurred!");
     }
   };
-
+console.log(editedData, "setEditedData");
   return (
     <div>
       <span

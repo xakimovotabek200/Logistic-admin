@@ -86,7 +86,9 @@ const GetNews = () => {
                     </Dropdown>
                   </div>
                   <img
-                    src={`http://192.168.137.62:8081/api/image/` + item?.jpgId}
+                    src={
+                      `http://192.168.137.126:8081/api/image/` + item?.jpgId
+                    }
                     alt=""
                     className="h-72 w-full rounded-t-lg object-cover"
                   />
@@ -94,7 +96,7 @@ const GetNews = () => {
                     <p className="text-xl font-bold tracking-tight text-gray-900 dark:text-gray-300">
                       {item?.title_en}
                     </p>
-                    <p className="line-clamp-3 whitespace-pre-wrap break-words mt-3 mb-4 max-w-full font-normal text-gray-700 dark:text-gray-400">
+                    <p className="mb-4 mt-3 line-clamp-3 max-w-full whitespace-pre-wrap break-words font-normal text-gray-700 dark:text-gray-400">
                       {item?.description_en}
                     </p>
                   </div>

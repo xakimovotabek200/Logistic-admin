@@ -26,7 +26,10 @@ const SeeAll = ({ data }) => {
         onCancel={handleCancel}
       >
         <div className="grid grid-cols-2 items-start">
-          <img src={`http://192.168.137.62:8081/api/` + data?.jpgId} alt="" />
+          <img
+            src={`http://192.168.137.126:8081/api/image/` + data?.jpgId}
+            alt=""
+          />
           <table>
             <tbody>
               <tr>

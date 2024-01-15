@@ -1,18 +1,17 @@
 import {
-  Bars3Icon,
-  BookmarkIcon,
-  PhoneIcon,
-  HomeIcon,
-  UserGroupIcon,
   BriefcaseIcon,
+  HomeIcon,
+  MegaphoneIcon,
   NewspaperIcon,
+  PhoneIcon,
+  UserGroupIcon
 } from "@heroicons/react/24/solid";
 import GetGroups from "./pages/About/About";
+import Hiring from "./pages/Hiring/Hiring";
 import NewsForm from "./pages/News/News";
 import GetKategoriya from "./pages/Vacansy/GetKategoriya";
 import Contact from "./pages/contact/Contact";
 import GetOrder from "./pages/home/GetOrder";
-import Hiring from "./pages/Hiring/Hiring";
 
 const icon = {
   className: "w-5 h-5 text-inherit",
@@ -54,7 +53,7 @@ export const routes = [
         element: <NewsForm />,
       },
       {
-        icon: <NewspaperIcon {...icon} />,
+        icon: <MegaphoneIcon {...icon} />,
         name: "Hiring",
         path: "/hiring",
         element: <Hiring />,
