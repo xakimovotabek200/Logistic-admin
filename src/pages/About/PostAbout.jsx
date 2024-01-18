@@ -165,9 +165,6 @@ const PostAbout = ({ getData }) => {
           </Button>
         </form>
       </Modal>
-
-      {error && <p>Error: {error}</p>}
-      {success && <p>Post successful!</p>}
     </div>
   );
 };

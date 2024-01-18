@@ -4,7 +4,8 @@ import {
   MegaphoneIcon,
   NewspaperIcon,
   PhoneIcon,
-  UserGroupIcon
+  UserGroupIcon,
+  InboxStackIcon,
 } from "@heroicons/react/24/solid";
 import GetGroups from "./pages/About/About";
 import Hiring from "./pages/Hiring/Hiring";
@@ -12,6 +13,7 @@ import NewsForm from "./pages/News/News";
 import GetKategoriya from "./pages/Vacansy/GetKategoriya";
 import Contact from "./pages/contact/Contact";
 import GetOrder from "./pages/home/GetOrder";
+import ServisecForm from "./pages/Services/Services";
 
 const icon = {
   className: "w-5 h-5 text-inherit",
@@ -57,6 +59,12 @@ export const routes = [
         name: "Hiring",
         path: "/hiring",
         element: <Hiring />,
+      },
+      {
+        icon: <InboxStackIcon {...icon} />,
+        name: "Services",
+        path: "/services",
+        element: <ServisecForm />,
       },
     ],
   },
