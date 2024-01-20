@@ -7,9 +7,24 @@ const { TextArea } = Input;
 const NewsForm = () => {
   const [file, setFile] = useState();
   const [formData, setFormData] = useState({});
+  const [data, setData] = useState(null);
 
   const [isModalOpen, setIsModalOpen] = useState(false);
 
+  async function getData() {
+    await axios
+      .get("/news")
+      .then((response) => {
+        setData(response.data);
+      })
+      .catch((error) => {
+        setError(error.message);
+      });
+  }
+
+  useEffect(() => {
+    getData();
+  }, []);
   const showModal = () => {
     setIsModalOpen(true);
   };
@@ -61,6 +76,7 @@ const NewsForm = () => {
       const response = await axios.post("news", formdataForSubmit);
       console.log(response.data);
       handleCancel(response);
+      getData();
     } catch (error) {
       console.error("Error submitting news post:", error);
     }
@@ -74,6 +90,7 @@ const NewsForm = () => {
       >
         + Add News
       </Button>
+
       <Modal
         width={1000}
         title="Create News"
@@ -129,7 +146,7 @@ const NewsForm = () => {
             Description in Russian:
             <TextArea
               showCount
-              placeholder="Description in English"
+              placeholder="Description in Russian"
               style={{
                 height: 120,
                 resize: "none",
@@ -143,7 +160,7 @@ const NewsForm = () => {
             Description in Uzbek:
             <TextArea
               showCount
-              placeholder="Description in English"
+              placeholder="Description in Uzbek"
               style={{
                 height: 120,
                 resize: "none",
@@ -164,7 +181,11 @@ const NewsForm = () => {
             />
             <img src={file} className="w-[400px] " />
           </label>
-          <Button htmlType="submit" type="primary" className="bg-blue-500">
+          <Button
+            htmlType="submit"
+            type="primary"
+            className="w-full bg-blue-500"
+          >
             Submit
           </Button>
         </form>

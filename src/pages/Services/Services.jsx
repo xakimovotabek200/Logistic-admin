@@ -129,7 +129,7 @@ const ServisecForm = () => {
             Description in Russian:
             <TextArea
               showCount
-              placeholder="Description in English"
+              placeholder="Description in Russian"
               style={{
                 height: 120,
                 resize: "none",
@@ -143,7 +143,7 @@ const ServisecForm = () => {
             Description in Uzbek:
             <TextArea
               showCount
-              placeholder="Description in English"
+              placeholder="Description in uzbek"
               style={{
                 height: 120,
                 resize: "none",
@@ -164,7 +164,11 @@ const ServisecForm = () => {
             />
             <img src={file} className="w-[400px] " />
           </label>
-          <Button htmlType="submit" type="primary" className="bg-blue-500">
+          <Button
+            htmlType="submit"
+            type="primary"
+            className="w-full bg-blue-500"
+          >
             Submit
           </Button>
         </form>

@@ -15,6 +15,7 @@ import SeeAll from "./SeeAll";
 const GetNews = () => {
   const [data, setData] = useState(null);
   const [error, setError] = useState(null);
+
   async function getData() {
     await axios
       .get("/news")
@@ -86,9 +87,7 @@ const GetNews = () => {
                     </Dropdown>
                   </div>
                   <img
-                    src={
-                      `http://192.168.137.126:8081/api/image/` + item?.jpgId
-                    }
+                    src={`http://82.97.242.32:8080/api/image/` + item?.jpgId}
                     alt=""
                     className="h-72 w-full rounded-t-lg object-cover"
                   />

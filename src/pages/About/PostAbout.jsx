@@ -70,7 +70,7 @@ const PostAbout = ({ getData }) => {
       </Button>
       <Modal
         width={1000}
-        title="Create News"
+        title="About us"
         open={isModalOpen}
         onOk={handleOk}
         onCancel={handleCancel}

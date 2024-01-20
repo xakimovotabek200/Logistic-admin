@@ -1,19 +1,23 @@
 import {
   BriefcaseIcon,
   HomeIcon,
+  InboxStackIcon,
   MegaphoneIcon,
   NewspaperIcon,
   PhoneIcon,
+  PhotoIcon,
+  TableCellsIcon,
   UserGroupIcon,
-  InboxStackIcon,
 } from "@heroicons/react/24/solid";
+import Testimonial from "./Testimonial/Testimonial";
 import GetGroups from "./pages/About/About";
+import Banner from "./pages/Banners/Banner";
 import Hiring from "./pages/Hiring/Hiring";
 import NewsForm from "./pages/News/News";
+import ServisecForm from "./pages/Services/Services";
 import GetKategoriya from "./pages/Vacansy/GetKategoriya";
 import Contact from "./pages/contact/Contact";
 import GetOrder from "./pages/home/GetOrder";
-import ServisecForm from "./pages/Services/Services";
 
 const icon = {
   className: "w-5 h-5 text-inherit",
@@ -28,6 +32,12 @@ export const routes = [
         name: "Dashboard",
         path: "/home",
         element: <GetOrder />,
+      },
+      {
+        icon: <PhotoIcon {...icon} />,
+        name: "Banners",
+        path: "/banner",
+        element: <Banner />,
       },
 
       {
@@ -65,6 +75,12 @@ export const routes = [
         name: "Services",
         path: "/services",
         element: <ServisecForm />,
+      },
+      {
+        icon: <TableCellsIcon {...icon} />,
+        name: "Testimonials",
+        path: "/testimonial",
+        element: <Testimonial />,
       },
     ],
   },

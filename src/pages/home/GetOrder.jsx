@@ -1,8 +1,7 @@
+import { contact, hiri, news, sumka } from "@/assets/status_images";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { toast } from "react-toastify";
-import { news, hiri, contact, sumka } from "@/assets/status_images";
-import { Card } from "antd";
 
 function Homepage() {
   const [data, setData] = useState({});
@@ -16,7 +15,8 @@ function Homepage() {
   async function getData() {
     try {
       const response = await axios.get("home");
-      setData(response.data);
+      setStatusData(response?.data);
+      console.log(response, "data");
     } catch (error) {
       toast.error(error.message);
     }

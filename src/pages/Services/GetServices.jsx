@@ -12,7 +12,6 @@ import DeleteServices from "./DeleteServices";
 import EditServices from "./EditServices";
 import SeeAll from "./SeeAll";
 
-
 const GetServices = () => {
   const [data, setData] = useState(null);
   const [error, setError] = useState(null);
@@ -90,9 +89,7 @@ const GetServices = () => {
                     </Dropdown>
                   </div>
                   <img
-                    src={
-                      `http://192.168.137.126:8081/api/image/` + item?.imageId
-                    }
+                    src={`http://82.97.242.32:8080/api/image/` + item?.imageId}
                     alt=""
                     className="h-72 w-full rounded-t-lg object-cover"
                   />
