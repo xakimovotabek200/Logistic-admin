@@ -1,9 +1,36 @@
-import React from 'react'
+import { Popconfirm } from "antd";
+import axios from "axios";
+import { toast } from "react-toastify";
 
-const DeleteBanner = () => {
+const DeleteBanner = ({ id, getData }) => {
+  async function handleDelete() {
+    try {
+      const res = await axios.delete(`/banner/${id}`);
+      if (res.status === 204) {
+        getData();
+        toast.info("O'chirildi!");
+      }
+    } catch (error) {
+      toast.error("Nimadadir xatolik ketdi!");
+    }
+  }
+
+  const confirm = () => {
+    handleDelete();
+  };
+
   return (
-    <div>DeleteBanner</div>
-  )
-}
+    <div>
+      <Popconfirm
+        title="Are you sure to delete this data?"
+        onConfirm={confirm}
+        okText="Yes"
+        cancelText="No"
+      >
+        <p>O'chirish</p>
+      </Popconfirm>
+    </div>
+  );
+};
 
-export default DeleteBanner
+export default DeleteBanner;
