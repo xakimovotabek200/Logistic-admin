@@ -9,7 +9,6 @@ import {
 import axios from "axios";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
-import { Navigate } from "react-router-dom";
 import { toast } from "react-toastify";
 
 const apiUrl = "auth/authenticate";
@@ -57,7 +56,7 @@ export function SignIn() {
       />
       <div className="absolute inset-0 z-0 h-full w-full bg-black/50" />
       <div className="container mx-auto p-4 ">
-        <Card className="absolute top-2/4 left-2/4 w-full max-w-[24rem] -translate-y-2/4 -translate-x-2/4">
+        <Card className="absolute left-2/4 top-2/4 w-full max-w-[24rem] -translate-x-2/4 -translate-y-2/4">
           <CardHeader
             variant="gradient"
             color="blue"
@@ -77,6 +76,11 @@ export function SignIn() {
                 autoComplete="false"
                 {...register("username", { required: true })}
               />
+              {errors.username && (
+                <Typography variant="caption" color="red">
+                  Foydalanuvchi nomini kiriting
+                </Typography>
+              )}
 
               <Input
                 type="password"
@@ -85,6 +89,12 @@ export function SignIn() {
                 size="md"
                 {...register("password", { required: true })}
               />
+              {errors.password && (
+                <Typography variant="caption" color="red">
+                  Parolni kiriting
+                </Typography>
+              )}
+
               <Button type="submit" variant="gradient" fullWidth>
                 Kirish
               </Button>

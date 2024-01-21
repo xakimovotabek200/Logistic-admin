@@ -54,7 +54,7 @@ const EditInformation = ({ data, id, getData }) => {
         className="fa-solid fa-edit cursor-pointer text-xl text-blue-500"
       />
       <Modal
-        title="Edit Vacancy"
+        title="Edit About"
         open={isModalOpen}
         onOk={handleSubmit}
         onCancel={handleCancel}

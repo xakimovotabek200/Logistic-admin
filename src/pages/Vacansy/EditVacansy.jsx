@@ -23,10 +23,6 @@ const EditVacancy = ({ data, id, getData }) => {
     setIsModalOpen(true);
   };
 
-  const handleOk = () => {
-    setIsModalOpen(false);
-  };
-
   const handleCancel = () => {
     setIsModalOpen(false);
   };
@@ -37,6 +33,7 @@ const EditVacancy = ({ data, id, getData }) => {
       [field]: value,
     }));
   };
+
   const handleSubmit = async () => {
     try {
       const res = await axios.patch(`/vacancy/${id}`, editedData);
@@ -49,7 +46,7 @@ const EditVacancy = ({ data, id, getData }) => {
       toast.error("An error occurred!");
     }
   };
-console.log(editedData, "setEditedData");
+  console.log(editedData, "setEditedData");
   return (
     <div>
       <span
@@ -57,7 +54,7 @@ console.log(editedData, "setEditedData");
         className="fa-solid fa-edit cursor-pointer text-xl text-blue-500"
       />
       <Modal
-        title="Edit Vacancy"
+        title="Edit Vacansy"
         open={isModalOpen}
         onOk={handleSubmit}
         onCancel={handleCancel}

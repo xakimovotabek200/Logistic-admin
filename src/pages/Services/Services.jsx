@@ -72,11 +72,11 @@ const ServisecForm = () => {
         className="fixed bottom-5 right-5 z-30 w-fit bg-blue-500"
         onClick={showModal}
       >
-        + Add News
+        + Add Services
       </Button>
       <Modal
         width={1000}
-        title="Create News"
+        title="Create Services"
         open={isModalOpen}
         onOk={handleOk}
         onCancel={handleCancel}

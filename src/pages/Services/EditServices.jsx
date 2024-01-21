@@ -53,7 +53,7 @@ const EditServices = ({ data, getData }) => {
       handleCancel(response);
       getData();
     } catch (error) {
-      console.error("Error submitting news patch:", error);
+      console.error("Error submitting servicew patch:", error);
     }
   };
 
@@ -62,7 +62,7 @@ const EditServices = ({ data, getData }) => {
       <p onClick={showModal}>Tahrirlash</p>
       <Modal
         width={1000}
-        title="Edit News"
+        title="Edit Service"
         open={isModalOpen}
         onOk={handleOk}
         onCancel={handleCancel}

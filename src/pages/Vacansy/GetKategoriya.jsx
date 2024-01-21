@@ -71,6 +71,39 @@ const Vacansy = ({ getData }) => {
       >
         <form onSubmit={postData}>
           <label>
+            Title (English):
+            <Input
+              type="text"
+              placeholder="title_english"
+              size="large"
+              name="title_en"
+              value={formData.title_en}
+              onChange={handleChange}
+            />
+          </label>
+          <label>
+            Title (Russian):
+            <Input
+              type="text"
+              name="title_ru"
+              size="large"
+              placeholder="title_russian"
+              value={formData.title_ru}
+              onChange={handleChange}
+            />
+          </label>
+          <label>
+            Title (Uzbek):
+            <Input
+              type="text"
+              name="title_uz"
+              size="large"
+              placeholder="title_uzbek"
+              value={formData.title_uz}
+              onChange={handleChange}
+            />
+          </label>
+          <label>
             Description (English):
             <TextArea
               showCount
@@ -118,44 +151,13 @@ const Vacansy = ({ getData }) => {
               onChange={handleChange}
             />
           </label>
-
-          <label>
-            Title (English):
-            <Input
-              type="text"
-              size="large"
-              name="title_en"
-              value={formData.title_en}
-              onChange={handleChange}
-            />
-          </label>
-          <label>
-            Title (Russian):
-            <Input
-              type="text"
-              name="title_ru"
-              size="large"
-              value={formData.title_ru}
-              onChange={handleChange}
-            />
-          </label>
-          <label>
-            Title (Uzbek):
-            <Input
-              type="text"
-              name="title_uz"
-              size="large"
-              value={formData.title_uz}
-              onChange={handleChange}
-            />
-          </label>
-
           <label>
             Work Hours:
             <Input
               type="text"
               name="workHours"
               size="large"
+              placeholder="Work Hours"
               value={formData.workHours}
               onChange={handleChange}
             />
@@ -166,6 +168,7 @@ const Vacansy = ({ getData }) => {
               type="text"
               name="workdays"
               size="large"
+              placeholder="Work Days"
               value={formData.workdays}
               onChange={handleChange}
             />
@@ -176,6 +179,7 @@ const Vacansy = ({ getData }) => {
               type="text"
               name="location"
               size="large"
+              placeholder="Location"
               value={formData.location}
               onChange={handleChange}
             />
@@ -183,7 +187,7 @@ const Vacansy = ({ getData }) => {
           <label>
             Remote:
             <Checkbox
-            className="py-5 px-10 "
+              className="px-10 py-5 "
               onChange={(e) =>
                 setFormData((old) => ({ ...old, remote: e.target.checked }))
               }

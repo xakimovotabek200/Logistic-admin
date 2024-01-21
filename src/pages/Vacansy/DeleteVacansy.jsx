@@ -28,9 +28,7 @@ const DeleteVacansy = ({ id, getData }) => {
         okText="Yes"
         cancelText="No"
       >
-        <span
-          className="fa-solid fa-trash cursor-pointer text-center text-xl text-red-500"
-        />{" "}
+        <span className="fa-solid fa-trash cursor-pointer text-center text-xl text-red-500" />{" "}
       </Popconfirm>
     </div>
   );
