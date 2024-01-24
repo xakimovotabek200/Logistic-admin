@@ -59,7 +59,6 @@ const ServisecForm = () => {
 
     try {
       const response = await axios.post("services", formdataForSubmit);
-      console.log(response.data);
       handleCancel(response);
     } catch (error) {
       console.error("Error submitting news post:", error);

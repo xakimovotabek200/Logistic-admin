@@ -119,14 +119,12 @@ const EditServices = ({ data, getData }) => {
             />
           </Form.Item>
           <Form.Item label="image" name="image">
-            <br />
             <Input
               type="file"
               name="image"
               className="file:cursor-pointer file:rounded-md file:bg-transparent file:px-5"
               onChange={handleChange}
             />
-            <img src={file} className="w-[400px] " />
           </Form.Item>
           <Button
             type="primary"

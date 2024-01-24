@@ -6,7 +6,7 @@ const DeleteInformation = ({ id, getData }) => {
   async function handleDelete() {
     try {
       const res = await axios.delete(`/information/${id}`);
-      if (res.status === 200) {
+      if (res.status === 204) {
         getData();
         toast.info("O'chirildi!");
       }

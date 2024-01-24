@@ -1,21 +1,14 @@
 import { Button, Input, Modal } from "antd";
 import axios from "axios";
 import { useState } from "react";
+import PostBanner from "../Banners/PostBanner";
 const { TextArea } = Input;
 
 const PostAbout = ({ getData }) => {
-  const [formData, setFormData] = useState({
-    about_en: "",
-    about_ru: "",
-    about_uz: "",
-    location: "",
-    number: "",
-    email: "",
-  });
-
+  const [file, setFile] = useState();
   const [error, setError] = useState(null);
   const [success, setSuccess] = useState(false);
-
+  const [formData, setFormData] = useState({});
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const showModal = () => {
@@ -23,15 +16,24 @@ const PostAbout = ({ getData }) => {
   };
 
   const handleOk = () => {
-    setIsModalOpen(false);
+    setIsModalOpen(true);
   };
 
   const handleCancel = () => {
     setIsModalOpen(false);
+    getData();
   };
+
+  const handleChangeInput = (e) => {
+    setFile(URL.createObjectURL(e.target.files[0]));
+  };
+
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setFormData({ ...formData, [name]: value });
+    setFormData((prevFormData) => ({
+      ...prevFormData,
+      [name]: value,
+    }));
   };
 
   const validateForm = () => {
@@ -45,13 +47,25 @@ const PostAbout = ({ getData }) => {
     return true;
   };
 
-  const postData = async () => {
+  const postData = async (e) => {
+    e.preventDefault();
+    const { about_en, about_ru, about_uz, location, number, email, image } =
+      e.target;
+    const formdataForSubmit = new FormData();
+    formdataForSubmit.append("about_en", about_en.value);
+    formdataForSubmit.append("about_ru", about_ru.value);
+    formdataForSubmit.append("about_uz", about_uz.value);
+    formdataForSubmit.append("location", location.value);
+    formdataForSubmit.append("number", number.value);
+    formdataForSubmit.append("email", email.value);
+    formdataForSubmit.append("image", image.files[0]);
+
     try {
       if (validateForm()) {
-        const response = await axios.post("/information", formData);
+        const response = await axios.post("/information", formdataForSubmit);
         setSuccess(true);
-        getData();
         handleCancel();
+        getData();
       }
     } catch (error) {
       setError(error.response?.data?.message || "An error occurred");
@@ -75,7 +89,7 @@ const PostAbout = ({ getData }) => {
         onOk={handleOk}
         onCancel={handleCancel}
       >
-        <form>
+        <form onSubmit={postData}>
           <label>
             about_en:
             <TextArea
@@ -156,10 +170,20 @@ const PostAbout = ({ getData }) => {
               onChange={handleChange}
             />
           </label>
+          <label>
+            Image:
+            <Input
+              type="file"
+              size="large"
+              name="image"
+              value={formData.image}
+              onChange={handleChangeInput}
+            />
+          </label>
           <Button
             type="primary"
+            htmlType="submit"
             className="my-5 w-full bg-blue-500"
-            onClick={postData}
           >
             Submit
           </Button>

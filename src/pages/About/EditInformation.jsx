@@ -1,19 +1,12 @@
-import { Button, Input, Modal } from "antd";
+import { Button, Form, Input, Modal } from "antd";
 import axios from "axios";
 import { useState } from "react";
-import { toast } from "react-toastify";
 const { TextArea } = Input;
 
-const EditInformation = ({ data, id, getData }) => {
+const EditInformation = ({ data, getData }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [editedData, setEditedData] = useState({
-    about_en: data?.about_en || "",
-    about_ru: data?.about_ru || "",
-    about_uz: data?.about_uz || "",
-    location: data?.location || "",
-    number: data?.number || "",
-    email: data?.email || "",
-  });
+  const [file, setFile] = useState();
+  const [image, setImage] = useState();
 
   const showModal = () => {
     setIsModalOpen(true);
@@ -26,24 +19,32 @@ const EditInformation = ({ data, id, getData }) => {
   const handleCancel = () => {
     setIsModalOpen(false);
   };
-
-  const handleChange = (field, value) => {
-    setEditedData((prevData) => ({
-      ...prevData,
-      [field]: value,
-    }));
+  const handleChange = (e) => {
+    setFile(URL.createObjectURL(e.target.files[0]));
+    setImage(e.target.files[0]);
   };
 
-  const handleSubmit = async () => {
+  const handleSubmit = async (values) => {
+    const formdataForSubmit = new FormData();
+    formdataForSubmit.append("location", values.location ?? data?.location);
+    formdataForSubmit.append("email", values.email ?? data?.email);
+    formdataForSubmit.append("number", values.number ?? data?.number);
+    formdataForSubmit.append("about_en", values.about_en ?? data?.about_en);
+    formdataForSubmit.append("about_ru", values.about_ru ?? data?.about_ru);
+    formdataForSubmit.append("about_uz", values.about_uz ?? data?.about_uz);
+    if (image) {
+      formdataForSubmit.append("image", image);
+    }
+
     try {
-      const res = await axios.patch(`/information/${data.id}`, editedData);
-      if (res.status === 200) {
-        toast.success("Profile edited successfully");
-        handleCancel();
-        getData();
-      }
-    } catch (err) {
-      toast.error("An error occurred!");
+      const response = await axios.patch(
+        `information/${data.id}`,
+        formdataForSubmit
+      );
+      handleCancel(response);
+      getData();
+    } catch (error) {
+      console.error("Error submitting servicew patch:", error);
     }
   };
 
@@ -54,91 +55,80 @@ const EditInformation = ({ data, id, getData }) => {
         className="fa-solid fa-edit cursor-pointer text-xl text-blue-500"
       />
       <Modal
+        width={1000}
         title="Edit About"
         open={isModalOpen}
-        onOk={handleSubmit}
+        onOk={handleOk}
         onCancel={handleCancel}
       >
-        <div>
-          <label htmlFor="about_en">about_en:</label>
-          <TextArea
-            showCount
-            style={{
-              height: 120,
-              resize: "none",
-            }}
-            placeholder="Description in English"
-            value={editedData.about_en}
-            defaultValue={editedData.about_en}
-            onChange={(e) => handleChange("about_en", e.target.value)}
-            className="w-full rounded-md border border-blue-500 p-2 focus:outline-2 focus:outline-blue-700"
-          />
-        </div>
-        <div>
-          <label htmlFor="about_ru">about_ru:</label>
-          <TextArea
-            showCount
-            style={{
-              height: 120,
-              resize: "none",
-            }}
-            placeholder="Description in English"
-            defaultValue={data.about_ru}
-            value={editedData.about_ru}
-            onChange={(e) => handleChange("about_ru", e.target.value)}
-            className="w-full rounded-md border border-blue-500 p-2 focus:outline-2 focus:outline-blue-700"
-          />
-        </div>
-        <div>
-          <label htmlFor="about_uz">about_uz:</label>
-          <TextArea
-            showCount
-            style={{
-              height: 120,
-              resize: "none",
-            }}
-            placeholder="Description in English"
-            value={editedData.about_uz}
-            defaultValue={editedData.about_uz}
-            onChange={(e) => handleChange("about_uz", e.target.value)}
-            className="w-full rounded-md border border-blue-500 p-2 focus:outline-2 focus:outline-blue-700"
-          />
-        </div>
-        <div>
-          <label htmlFor="location">location:</label>
-          <Input
-            value={editedData.location}
-            defaultValue={editedData.location}
-            onChange={(e) => handleChange("location", e.target.value)}
-            className="w-full rounded-md border border-blue-500 p-2 focus:outline-2 focus:outline-blue-700"
-          />
-        </div>
-        <div>
-          <label htmlFor="number">phone:</label>
-          <Input
-            type="text"
-            value={editedData.number}
-            defaultValue={editedData.number}
-            onChange={(e) => handleChange("number", e.target.value)}
-            className="w-full rounded-md border border-blue-500 p-2 focus:outline-2 focus:outline-blue-700"
-          />
-        </div>
-        <div>
-          <label htmlFor="email">email:</label>
-          <Input
-            value={editedData.email}
-            defaultValue={editedData.email}
-            onChange={(e) => handleChange("email", e.target.value)}
-            className="w-full rounded-md border border-blue-500 p-2 focus:outline-2 focus:outline-blue-700"
-          />
-        </div>
-        <Button
-          className="my-6 w-full bg-blue-500"
-          type="primary"
-          onClick={handleSubmit}
+        <Form
+          name="basic"
+          labelCol={{ span: 8 }}
+          wrapperCol={{ span: 16 }}
+          style={{ maxWidth: 600 }}
+          initialValues={{ remember: true }}
+          autoComplete="off"
+          onFinish={handleSubmit}
         >
-          Submit
-        </Button>
+          <Form.Item label="location" name="location">
+            <Input type="text" defaultValue={data.location} />
+          </Form.Item>
+          <Form.Item label="email" name="email">
+            <Input type="email" defaultValue={data.email} />
+          </Form.Item>
+          <Form.Item label="number" name="number">
+            <Input defaultValue={data.number} />
+          </Form.Item>
+          <Form.Item label="about_en" name="about_en">
+            <TextArea
+              showCount
+              placeholder="Description in about_en"
+              style={{
+                height: 120,
+                resize: "none",
+              }}
+              defaultValue={data.about_en}
+            />
+          </Form.Item>
+          <Form.Item label="about_ru" name="about_ru">
+            <TextArea
+              showCount
+              placeholder="Description in about_ru"
+              style={{
+                height: 120,
+                resize: "none",
+              }}
+              defaultValue={data.about_ru}
+            />
+          </Form.Item>
+          <Form.Item label="about_uz" name="about_uz">
+            <TextArea
+              showCount
+              placeholder="Description in about_uz"
+              style={{
+                height: 120,
+                resize: "none",
+              }}
+              defaultValue={data.about_uz}
+            />
+          </Form.Item>
+
+          <Form.Item label="image" name="image">
+            <Input
+              type="file"
+              name="image"
+              className="file:cursor-pointer file:rounded-md file:bg-transparent file:px-5"
+              onChange={handleChange}
+            />
+          </Form.Item>
+          <Button
+            type="primary"
+            htmlType="submit"
+            className="w-full bg-blue-500"
+          >
+            Tahrirlash
+          </Button>
+        </Form>
       </Modal>
     </div>
   );

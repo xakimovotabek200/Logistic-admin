@@ -28,10 +28,10 @@ function About() {
           {data?.length > 0 ? (
             data?.map((item, index) => (
               <div key={index} className="">
-                <div className="flex items-center justify-between gap-16">
+                <div className="grid justify-between gap-16 md:grid-cols-2">
                   <div>
                     {" "}
-                    <p className="mb-2 text-lg">{item?.about_en}</p>
+                    <p className="mb-2 text-lg ">{item?.about_en}</p>
                     <p className="mb-2 text-sm">{item?.about_ru}</p>
                     <p className="mb-2 text-sm">{item?.about_uz}</p>
                     <p className="mb-2">{item?.location}</p>
@@ -40,6 +40,7 @@ function About() {
                   </div>
                   <div>
                     <img
+                      className="h-[300px]"
                       src={`http://82.97.242.32:8080/api/image/ +${item.image}`}
                       alt=""
                     />
