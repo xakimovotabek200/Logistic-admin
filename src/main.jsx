@@ -8,7 +8,7 @@ import "../public/css/tailwind.css";
 import App from "./App";
 import "./index.css";
 
-let global_url = "http://192.168.137.75:8080/api/";
+let global_url = "https://api.artellogistics.com/api/";
 axios.defaults.baseURL = global_url;
 
 let token = sessionStorage.getItem("token");

@@ -41,7 +41,7 @@ function About() {
                   <div>
                     <img
                       className="h-[300px]"
-                      src={`http://82.97.242.32:8080/api/image/ +${item.image}`}
+                      src={`https://api.artellogistics.com/api/image/ +${item.image}`}
                       alt=""
                     />
                   </div>
@@ -74,7 +74,4 @@ function About() {
 }
 
 export default About;
-{
-  /* <DeleteInformation id={item.id} getData={getData} />
-<EditInformation id={item.id} getData={getData} data={item} /> */
-}
+

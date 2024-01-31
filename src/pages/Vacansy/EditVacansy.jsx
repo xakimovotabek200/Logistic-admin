@@ -38,7 +38,7 @@ const EditVacancy = ({ data, id, getData }) => {
     try {
       const res = await axios.patch(`/vacancy/${id}`, editedData);
       if (res.status === 200) {
-        toast.success("Profile edited successfully");
+        toast.success("Vacansy edited successfully");
         handleCancel();
         getData();
       }
@@ -46,7 +46,6 @@ const EditVacancy = ({ data, id, getData }) => {
       toast.error("An error occurred!");
     }
   };
-  console.log(editedData, "setEditedData");
   return (
     <div>
       <span

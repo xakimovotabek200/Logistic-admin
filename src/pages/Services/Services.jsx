@@ -23,7 +23,6 @@ const ServisecForm = () => {
   };
 
   const handleChange = (e) => {
-    console.log(e.target.files[0]);
     setFile(URL.createObjectURL(e.target.files[0]));
   };
 

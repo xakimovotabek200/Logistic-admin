@@ -4,7 +4,7 @@ import { useState } from "react";
 import { toast } from "react-toastify";
 const { TextArea } = Input;
 
-const PostTestimonial = (getData) => {
+const PostTestimonial = ({getData}) => {
   const [file, setFile] = useState();
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [formData, setFormData] = useState({});

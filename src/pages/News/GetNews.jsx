@@ -90,7 +90,10 @@ const GetNews = () => {
                       </Dropdown>
                     </div>
                     <img
-                      src={`http://82.97.242.32:8080/api/image/` + item?.jpgId}
+                      src={
+                        `https://api.artellogistics.com/api/image/` +
+                        item?.jpgId
+                      }
                       alt=""
                       className="h-72 w-full rounded-t-lg object-cover"
                     />
@@ -107,7 +110,7 @@ const GetNews = () => {
               })
             ) : (
               <div>
-                <div className="flex flex-col justify-center items-center gap-3">
+                <div className="flex flex-col items-center justify-center gap-3">
                   <img src="/empty.png" alt="no data" width={100} />
                   <p className="text-gray-500">No data available.</p>
                 </div>

@@ -22,7 +22,6 @@ const Testimonial = () => {
     getData();
   }, []);
 
-  console.log(testimonial, "test");
 
   return (
     <div className="mx-auto mt-[8px] flex min-h-[840px] min-w-full max-w-screen-lg flex-col gap-8 rounded-lg bg-white shadow-2xl md:container md:mt-10">
@@ -49,7 +48,7 @@ const Testimonial = () => {
                   <td className="border p-3">
                     <img
                       className="aspect-square w-11 rounded-full"
-                      src={`http://82.97.242.32:8080/api/image/ +${item?.image}`}
+                      src={`https://api.artellogistics.com/api/image/ +${item?.image}`}
                       alt=""
                     />
                   </td>

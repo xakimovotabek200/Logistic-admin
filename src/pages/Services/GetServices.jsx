@@ -93,7 +93,8 @@ const GetServices = () => {
                     </div>
                     <img
                       src={
-                        `http://82.97.242.32:8080/api/image/` + item?.imageId
+                        `https://api.artellogistics.com/api/image/` +
+                        item?.imageId
                       }
                       alt=""
                       className="h-72 w-full rounded-t-lg object-cover"

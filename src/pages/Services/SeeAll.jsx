@@ -27,7 +27,7 @@ const SeeAll = ({ data }) => {
       >
         <div className="grid grid-cols-2 items-start">
           <img
-            src={`http://82.97.242.32:8080/api/image/` + data?.imageId}
+            src={`https://api.artellogistics.com/api/image/` + data?.imageId}
             alt=""
           />
           <table>

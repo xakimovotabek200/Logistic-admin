@@ -153,7 +153,7 @@ const PostAbout = ({ getData }) => {
           <label>
             Phone:
             <Input
-              type="number"
+              type="tel"
               size="large"
               name="number"
               value={formData.number}

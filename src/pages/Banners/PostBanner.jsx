@@ -18,7 +18,6 @@ const PostBanner = () => {
     setIsModalOpen(false);
   };
   const handleChange = (e) => {
-    console.log(e.target.files[0]);
     setFile(URL.createObjectURL(e.target.files[0]));
   };
   const handleSubmit = async (e) => {
@@ -28,7 +27,6 @@ const PostBanner = () => {
     formdataForSubmit.append("image", image.files[0]);
     try {
       const response = await axios.post("banner", formdataForSubmit);
-      console.log(response.data);
       handleCancel(response);
     } catch (error) {
       console.error("Error submitting news post:", error);

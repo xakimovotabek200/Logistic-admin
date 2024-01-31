@@ -38,7 +38,6 @@ const NewsForm = () => {
   };
 
   const handleChange = (e) => {
-    console.log(e.target.files[0]);
     setFile(URL.createObjectURL(e.target.files[0]));
   };
 
@@ -74,7 +73,6 @@ const NewsForm = () => {
 
     try {
       const response = await axios.post("news", formdataForSubmit);
-      console.log(response.data);
       handleCancel(response);
       getData();
     } catch (error) {
